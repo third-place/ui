@@ -2,6 +2,7 @@
   "expo": {
     "name": "thirdplace",
     "slug": "thirdplace",
+    "scheme": "thirdplace",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,13 +25,17 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "extra": {
       "eas": {
         "projectId": "9f3394f9-0411-4765-89dc-2dc92d80d675"
       }
     },
-    "owner": "danielmunro"
+    "owner": "danielmunro",
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
