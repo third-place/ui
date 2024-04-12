@@ -1,12 +1,13 @@
 import { View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { useState } from 'react';
-import { router, useNavigation } from 'expo-router';
+import { router } from 'expo-router';
+import { useSession } from '../src/SessionProvider';
 
 export default function LoginTab() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
+  const { signIn } = useSession();
 
   return (
     <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -25,6 +26,10 @@ export default function LoginTab() {
         <Button
           icon={"login"}
           mode={"contained"}
+          onPress={() => {
+            signIn();
+            router.replace("/");
+          }}
         >
           Login
         </Button>
