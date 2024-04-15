@@ -16,12 +16,14 @@ export default function LoginTab() {
             placeholder={"Email Address"}
             value={email}
             onChangeText={setEmail}
+            style={{marginVertical: 4}}
         />
         <TextInput
           placeholder={"Password"}
           value={password}
           onChangeText={setPassword}
           secureTextEntry={true}
+          style={{marginVertical: 4}}
         />
         <Button
           icon={"login"}
@@ -30,21 +32,31 @@ export default function LoginTab() {
             signIn();
             router.replace("/");
           }}
+          style={{marginVertical: 4}}
         >
           Login
         </Button>
-        <Button
-          icon={"account-plus"}
-          onPress={() => navigation.navigate("signup")}
-        >
-          Sign Up
-        </Button>
-        <Button
-          icon={"lock-reset"}
-          onPress={() => navigation.push("forgot-password")}
-        >
-          Forgot Password
-        </Button>
+        <View style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginVertical: 4,
+        }}>
+          <Button
+            icon={"account-plus"}
+            onPress={() => navigation.navigate("signup")}
+            style={{width: 180}}
+          >
+            Sign Up
+          </Button>
+          <Button
+            icon={"lock-reset"}
+            onPress={() => navigation.navigate("forgot-password")}
+            style={{width: 180}}
+          >
+            Forgot Password
+          </Button>
+        </View>
       </View>
     </View>
   );
