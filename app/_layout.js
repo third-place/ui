@@ -1,4 +1,4 @@
-import { SessionProvider } from '../src/SessionProvider';
+import { SessionProvider } from '../src/hooks/SessionProvider';
 import { Slot } from 'expo-router';
 
 export default function AppLayout() {

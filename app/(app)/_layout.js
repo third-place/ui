@@ -1,6 +1,6 @@
 import { Text } from 'react-native-paper';
 import { Redirect, Stack } from 'expo-router'
-import { useSession } from '../../src/SessionProvider';
+import { useSession } from '../../src/hooks/SessionProvider';
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
@@ -15,7 +15,7 @@ export default function AppLayout() {
   if (!session) {
     // On web, static rendering will stop here as the user is not authenticated
     // in the headless Node process that the pages are rendered in.
-    return <Redirect href="/login" />;
+    return <Redirect href="/sign-in" />;
   }
 
   // This layout can be deferred because it's not the root layout.

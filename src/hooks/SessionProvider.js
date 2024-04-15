@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useStorageState } from './hooks/useStorageState';
+import { useStorageState } from './useStorageState';
 
 const AuthContext = React.createContext({
   signIn: () => null,
@@ -32,9 +32,8 @@ export function SessionProvider(props) {
   return (
     <AuthContext.Provider
       value={{
-        signIn: async () => {
-          // Perform sign-in logic here
-          await setSession('xxx');
+        signIn: async (session) => {
+          await setSession(session);
         },
         signOut: async () => {
           await setSession(null);

@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import Container from '../src/components/Container';
 
 export default function ForgotPasswordTab() {
   return (
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+    <Container>
       <Text>Forgot Password</Text>
-    </View>
+    </Container>
   );
 }

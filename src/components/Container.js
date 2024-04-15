@@ -1,9 +1,9 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
-export default function SignupTab() {
+export default function Container({ children }) {
   return (
     <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-      <Text>Signup</Text>
+      {children}
     </View>
   );
 }

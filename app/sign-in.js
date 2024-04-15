@@ -1,16 +1,42 @@
 import { View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSession } from '../src/hooks/SessionProvider';
+import Container from '../src/components/Container';
+import {default as signInAction} from '../src/actions/sign-in';
 import { router } from 'expo-router';
-import { useSession } from '../src/SessionProvider';
 
-export default function LoginTab() {
+export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signIn } = useSession();
 
+  const submitSignIn = async (event) => {
+    event.preventDefault();
+    const response = await signInAction(email, password);
+    if (response.status !== 201) {
+      return;
+    }
+    const data = await response.json();
+    signIn(data);
+    router.replace("/");
+  };
+
+  useEffect(() => {
+    const listener = async event => {
+      console.log("listener", event.code);
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        await submitSignIn(event);
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, []);
+
   return (
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+    <Container>
       <View style={{width: 400}}>
         <TextInput
             placeholder={"Email Address"}
@@ -28,10 +54,7 @@ export default function LoginTab() {
         <Button
           icon={"login"}
           mode={"contained"}
-          onPress={() => {
-            signIn();
-            router.replace("/");
-          }}
+          onPress={submitSignIn}
           style={{marginVertical: 4}}
         >
           Login
@@ -58,6 +81,6 @@ export default function LoginTab() {
           </Button>
         </View>
       </View>
-    </View>
+    </Container>
   );
 }

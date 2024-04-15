@@ -1,17 +1,17 @@
-import { View } from 'react-native';
 import { Link, router } from 'expo-router';
-import { useSession } from '../../src/SessionProvider';
+import { useSession } from '../../src/hooks/SessionProvider';
+import Container from '../../src/components/Container';
 
 export default function Home() {
   const { signOut } = useSession();
   return (
-    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+    <Container>
       <Link href={"#"} onPress={() => {
         signOut();
         router.replace("/");
       }}>
-        Logout
+        Sign out
       </Link>
-    </View>
+    </Container>
   );
 }
