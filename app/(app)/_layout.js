@@ -1,8 +1,10 @@
 import { Text } from 'react-native-paper';
-import { Redirect, Stack } from 'expo-router'
+import { Redirect, Tabs } from 'expo-router'
 import { useSession } from '../../src/hooks/SessionProvider';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome6 } from '@expo/vector-icons';
 
-export default function AppLayout() {
+export default function Layout() {
   const { session, isLoading } = useSession();
 
   // You can keep the splash screen open, or render a loading screen like we do here.
@@ -19,5 +21,22 @@ export default function AppLayout() {
   }
 
   // This layout can be deferred because it's not the root layout.
-  return <Stack />;
+  return (
+    <Tabs>
+      <Tabs.Screen
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color }) => <Entypo name="home" size={24} color={color} />
+        }}
+        name="index"
+      />
+      <Tabs.Screen
+        options={{
+          title: "Settings",
+          tabBarIcon: ({ color }) => <FontAwesome6 name="gear" size={24} color={color} />
+        }}
+        name="settings"
+      />
+    </Tabs>
+  );
 }
