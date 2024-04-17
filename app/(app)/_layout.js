@@ -3,6 +3,7 @@ import { Redirect, Tabs } from 'expo-router'
 import { useSession } from '../../src/hooks/SessionProvider';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Layout() {
   const { session, isLoading } = useSession();
@@ -29,6 +30,13 @@ export default function Layout() {
           tabBarIcon: ({ color }) => <Entypo name="home" size={24} color={color} />
         }}
         name="index"
+      />
+      <Tabs.Screen
+        options={{
+          title: "Notifications",
+          tabBarIcon: ({ color }) => <Ionicons name="notifications" size={24} color={color} />
+        }}
+        name="notifications"
       />
       <Tabs.Screen
         options={{

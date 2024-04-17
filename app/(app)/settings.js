@@ -2,7 +2,7 @@ import Container from '../../src/components/Container';
 import { Link, router } from 'expo-router';
 import { useSession } from '../../src/hooks/SessionProvider';
 
-export default function SettingsTab() {
+export default function Settings() {
   const { signOut } = useSession();
   return (
     <Container>

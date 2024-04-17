@@ -9,13 +9,28 @@ function useAsyncState(initialValue = [true, null]) {
   );
 }
 
+function setValueSafe(value) {
+  if (value instanceof Object) {
+    return JSON.stringify(value);
+  }
+  return value;
+}
+
+function getValueSafe(value) {
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return value;
+  }
+}
+
 export async function setStorageItemAsync(key, value) {
   if (Platform.OS === 'web') {
     try {
       if (value === null) {
         localStorage.removeItem(key);
       } else {
-        localStorage.setItem(key, value);
+        localStorage.setItem(key, setValueSafe(value));
       }
     } catch (e) {
       console.error('Local storage is unavailable:', e);
@@ -24,7 +39,7 @@ export async function setStorageItemAsync(key, value) {
     if (value == null) {
       await SecureStore.deleteItemAsync(key);
     } else {
-      await SecureStore.setItemAsync(key, value);
+      await SecureStore.setItemAsync(key, setValueSafe(value));
     }
   }
 }
@@ -36,14 +51,14 @@ export function useStorageState(key) {
     if (Platform.OS === 'web') {
       try {
         if (typeof localStorage !== 'undefined') {
-          setState(localStorage.getItem(key));
+          setState(getValueSafe(localStorage.getItem(key)));
         }
       } catch (e) {
         console.error('Local storage is unavailable:', e);
       }
     } else {
       SecureStore.getItemAsync(key).then(value => {
-        setState(value);
+        setState(getValueSafe(value));
       });
     }
   }, [key]);
