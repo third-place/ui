@@ -1,12 +1,13 @@
-import { Avatar, Button, Card, IconButton, Text } from 'react-native-paper';
+import { Avatar, Card, IconButton, Text, Snackbar } from 'react-native-paper';
 import { Image } from 'react-native';
-import { FontAwesome6 } from '@expo/vector-icons';
+import * as Clipboard from 'expo-clipboard';
+import { useNavigation } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
-import { useNavigation } from 'expo-router';
+import { useState } from 'react';
 
 export default function Post({
   post: {
@@ -20,14 +21,15 @@ export default function Post({
   const profilePic = user.profile_pic ? `${endpoints.image}/asset/${user.profile_pic}` : '';
   const created = new Date(created_at);
   const { navigate } = useNavigation();
+  const [showLinkCopied, setShowLinkCopied] = useState(false);
 
-  const copyLinkToClipboard = (url) => {
-    navigator.clipboard.writeText(url);
-    setShowCopiedMessage(true);
-    setTimeout(() => {
-      setShowCopiedMessage(false);
-    }, 2000);
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(`${endpoints.web}/post/${uuid}`);
+    // setShowLinkCopied(true);
+    // setTimeout(() => setShowLinkCopied(false), 2000);
   };
+
+  const dismissCopyToClipboard = () => setShowLinkCopied(false);
 
   return (
     <Card style={{minWidth: 400}}>
@@ -75,12 +77,18 @@ export default function Post({
         />
         <IconButton
           icon={() => <AntDesign name="link" size={24} color="black" />}
-          onPress={() => null}
+          onPress={copyToClipboard}
           theme={{
             colors: "background",
           }}
         />
       </Card.Actions>
+      <Snackbar
+        visible={showLinkCopied}
+        onDismiss={dismissCopyToClipboard}
+      >
+        Link copied!
+      </Snackbar>
     </Card>
   );
 }

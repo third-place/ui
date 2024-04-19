@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext, createContext } from 'react';
 import { useStorageState } from './useStorageState';
 
-const AuthContext = React.createContext({
+const AuthContext = createContext({
   signIn: () => null,
   signOut: () => null,
   session: null,

@@ -23,7 +23,10 @@ export default function Index() {
   return (
     <Container>
       {posts.map(post => (
-        <Post key={post.uuid} post={post} />
+        <Post
+          key={post.uuid}
+          post={post}
+        />
       ))}
     </Container>
   );
