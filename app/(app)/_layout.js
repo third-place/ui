@@ -45,6 +45,13 @@ export default function Layout() {
         }}
         name="settings"
       />
+      <Tabs.Screen
+        options={{
+          href: null,
+          title: "Post"
+        }}
+        name="post/[uuid]"
+      />
     </Tabs>
   );
 }
