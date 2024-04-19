@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
 import { useState } from 'react';
+import { useSnack } from '../hooks/SnackProvider';
 
 export default function Post({
   post: {
@@ -21,12 +22,12 @@ export default function Post({
   const profilePic = user.profile_pic ? `${endpoints.image}/asset/${user.profile_pic}` : '';
   const created = new Date(created_at);
   const { navigate } = useNavigation();
-  const [showLinkCopied, setShowLinkCopied] = useState(false);
+  const { show, hide } = useSnack();
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(`${endpoints.web}/post/${uuid}`);
-    // setShowLinkCopied(true);
-    // setTimeout(() => setShowLinkCopied(false), 2000);
+    show("Link copied!");
+    setTimeout(() => hide(), 2000);
   };
 
   const dismissCopyToClipboard = () => setShowLinkCopied(false);
@@ -83,12 +84,6 @@ export default function Post({
           }}
         />
       </Card.Actions>
-      <Snackbar
-        visible={showLinkCopied}
-        onDismiss={dismissCopyToClipboard}
-      >
-        Link copied!
-      </Snackbar>
     </Card>
   );
 }
