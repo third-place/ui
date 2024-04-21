@@ -33,7 +33,7 @@ export default function Post({
   const dismissCopyToClipboard = () => setShowLinkCopied(false);
 
   return (
-    <Card style={{minWidth: 400}}>
+    <Card style={{marginVertical: 8}}>
       <Card.Title
         title={userDisplayName}
         subtitle={timeAgo.format(created)}
