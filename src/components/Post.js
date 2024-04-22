@@ -1,4 +1,4 @@
-import { Avatar, Card, IconButton, Text, Snackbar } from 'react-native-paper';
+import { Avatar, Card, IconButton, Text } from 'react-native-paper';
 import { Image } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { useNavigation } from 'expo-router';
@@ -7,7 +7,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
-import { useState } from 'react';
 import { useSnack } from '../hooks/SnackProvider';
 
 export default function Post({
@@ -21,7 +20,7 @@ export default function Post({
   const userDisplayName = user.name ? `${user.name} @${user.username}` : `@${user.username}`;
   const profilePic = user.profile_pic ? `${endpoints.image}/asset/${user.profile_pic}` : '';
   const created = new Date(created_at);
-  const { navigate } = useNavigation();
+  const { navigate, push } = useNavigation();
   const { show, hide } = useSnack();
 
   const copyToClipboard = async () => {
@@ -29,8 +28,6 @@ export default function Post({
     show("Link copied!");
     setTimeout(() => hide(), 2000);
   };
-
-  const dismissCopyToClipboard = () => setShowLinkCopied(false);
 
   return (
     <Card style={{marginVertical: 8}}>

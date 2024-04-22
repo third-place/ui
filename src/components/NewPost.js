@@ -39,11 +39,7 @@ export default function NewPost() {
   };
 
   return (
-    <View
-      style={{
-        width: '100%',
-      }}
-    >
+    <View>
       <TextInput
         value={newPost}
         onChangeText={setNewPost}

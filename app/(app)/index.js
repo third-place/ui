@@ -1,4 +1,4 @@
-import { RefreshControl } from 'react-native';
+import { RefreshControl, View } from 'react-native';
 import Container from '../../src/components/Container';
 import { useCallback, useEffect, useState } from 'react';
 import getPosts from '../../src/actions/get-posts';
@@ -48,13 +48,19 @@ export default function Index() {
           Error loading posts
         </HelperText>
       )}
-      <NewPost />
-      {posts.map(post => (
-        <Post
-          key={post.uuid}
-          post={post}
-        />
-      ))}
+      <View
+        style={{
+          maxWidth: 400,
+        }}
+      >
+        <NewPost />
+        {posts.map(post => (
+          <Post
+            key={post.uuid}
+            post={post}
+          />
+        ))}
+      </View>
     </Container>
   );
 }

@@ -52,6 +52,7 @@ export default function Layout() {
           title: "Post"
         }}
         name="post/[uuid]"
+        getId={() => String(Date.now())}
       />
     </Tabs>
   );

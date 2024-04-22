@@ -9,7 +9,8 @@ const allEndpoints = {
   development: {
     web: 'https://thirdplaceappdev.com',
     user: 'https://user-service.thirdplaceappdev.com',
-    community: 'https://community-service.thirdplaceappdev.com',
+    // community: 'https://community-service.thirdplaceappdev.com',
+    community: 'http://localhost:8080',
     image: 'https://image-service.thirdplaceappdev.com',
     notification: 'https://notification-service.thirdplaceappdev.com',
   },
