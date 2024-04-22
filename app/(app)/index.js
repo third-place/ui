@@ -1,6 +1,6 @@
-import { Text, View } from 'react-native';
+import { RefreshControl } from 'react-native';
 import Container from '../../src/components/Container';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import getPosts from '../../src/actions/get-posts';
 import { useSession } from '../../src/hooks/SessionProvider';
 import Post from '../../src/components/Post';
@@ -10,39 +10,51 @@ import { HelperText } from 'react-native-paper';
 export default function Index() {
   const [posts, setPosts] = useState([]);
   const [errorLoading, setErrorLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const { session } = useSession();
+
+  const loadPosts = useCallback(async () => {
+    setErrorLoading(false);
+    try {
+      const response = await getPosts(session.token);
+      const data = await response.json();
+      setPosts(data);
+    } catch (e) {
+      setErrorLoading(true);
+    }
+  }, []);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    await loadPosts();
+    setRefreshing(false);
+  }, []);
 
   useEffect(() => {
     if (!session) {
       return;
     }
     (async function() {
-      try {
-        const response = await getPosts(session.token);
-        const data = await response.json();
-        setPosts(data);
-      } catch (e) {
-        setErrorLoading(true);
-      }
+      await loadPosts();
     })();
   }, [session]);
 
   return (
-    <Container>
-      <View style={{width: 400}}>
-        { errorLoading && (
-          <HelperText type="error">
-            Error loading posts
-          </HelperText>
-        )}
-        <NewPost />
-        {posts.map(post => (
-          <Post
-            key={post.uuid}
-            post={post}
-          />
-        ))}
-      </View>
+    <Container refreshControl={
+      <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+    }>
+      { errorLoading && (
+        <HelperText type="error">
+          Error loading posts
+        </HelperText>
+      )}
+      <NewPost />
+      {posts.map(post => (
+        <Post
+          key={post.uuid}
+          post={post}
+        />
+      ))}
     </Container>
   );
 }
