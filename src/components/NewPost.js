@@ -41,6 +41,7 @@ export default function NewPost() {
   return (
     <View>
       <TextInput
+        placeholder={"What's on your mind?"}
         value={newPost}
         onChangeText={setNewPost}
         disabled={submitting}

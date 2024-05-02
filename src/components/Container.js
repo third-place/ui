@@ -1,21 +1,22 @@
-import { ScrollView } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, View } from 'react-native';
 import { SnackProvider } from '../hooks/SnackProvider';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Container({ children, refreshControl }) {
-  const insets = useSafeAreaInsets();
+  const Outer = Platform.OS === "web" ?
+    ({children}) => <>{children}</> :
+    ({children}) => <SafeAreaView>{children}</SafeAreaView>;
   return (
-    <ScrollView
-      contentContainerStyle={{
-        alignItems: 'center',
-        paddingTop: insets.top,
-        paddingBottom: insets.bottom,
-      }}
-      refreshControl={refreshControl}
-    >
-      <SnackProvider>
-        {children}
-      </SnackProvider>
-    </ScrollView>
+    <Outer>
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}
+        refreshControl={refreshControl}
+      >
+        <SnackProvider>
+          {children}
+        </SnackProvider>
+      </ScrollView>
+    </Outer>
   );
 }
