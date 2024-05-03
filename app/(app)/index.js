@@ -48,19 +48,13 @@ export default function Index() {
           Error loading posts
         </HelperText>
       )}
-      <View
-        style={{
-          maxWidth: 400,
-        }}
-      >
-        <NewPost />
-        {posts.map(post => (
-          <Post
-            key={post.uuid}
-            post={post}
-          />
-        ))}
-      </View>
+      <NewPost />
+      {posts.map(post => (
+        <Post
+          key={post.uuid}
+          post={post}
+        />
+      ))}
     </Container>
   );
 }

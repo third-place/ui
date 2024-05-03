@@ -14,7 +14,9 @@ export default function Container({ children, refreshControl }) {
         refreshControl={refreshControl}
       >
         <SnackProvider>
-          {children}
+          <View style={{maxWidth: 400}}>
+            {children}
+          </View>
         </SnackProvider>
       </ScrollView>
     </Outer>
