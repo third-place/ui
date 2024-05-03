@@ -30,22 +30,55 @@ export default function Post({
   };
 
   return (
-    <Card style={{marginVertical: 8}}>
+    <Card
+      style={{
+        marginVertical: 4,
+    }}
+    >
       <Card.Title
         title={userDisplayName}
+        titleStyle={{
+          fontSize: 20,
+          paddingTop: 0,
+          lineHeight: 28,
+        }}
         subtitle={timeAgo.format(created)}
+        subtitleStyle={{
+          lineHeight: 14,
+        }}
+        leftStyle={{
+          marginRight: 8,
+        }}
+        style={{
+          padding: 8,
+          minHeight: 0,
+        }}
         left={() => (
           <Avatar.Image
             alt={userDisplayName}
-            source={() => <Image source={{uri: profilePic}} />}
-            style={{width: 36, height: 36}}
+            source={() => (
+              <Image
+                source={{uri: profilePic}}
+                style={{
+                  height: 42,
+                  borderRadius: 72.5,
+                  borderWidth: 0,
+                }}
+              />
+            )}
+            size={42}
           />
         )}
       />
       <Card.Content>
-        <Text>{text}</Text>
+        <Text style={{fontSize: 16, lineHeight: 24}}>{text}</Text>
       </Card.Content>
-      <Card.Actions>
+      <Card.Actions
+        style={{
+          padding: 0,
+          margin: 0,
+        }}
+      >
         <IconButton
           icon={() => <FontAwesome name="comment-o" size={24} color="black" />}
           onPress={() => navigate({
@@ -57,6 +90,9 @@ export default function Post({
           mode={"contained"}
           theme={{
             colors: "background",
+          }}
+          style={{
+            margin: 0,
           }}
         />
         <IconButton
