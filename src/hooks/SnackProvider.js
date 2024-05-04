@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import { View } from 'react-native';
 import { Snackbar } from 'react-native-paper';
 
 const SnackContext = createContext({
