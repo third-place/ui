@@ -1,4 +1,4 @@
-import { RefreshControl, View } from 'react-native';
+import { RefreshControl } from 'react-native';
 import Container from '../../src/components/Container';
 import { useCallback, useEffect, useState } from 'react';
 import getPosts from '../../src/actions/get-posts';
