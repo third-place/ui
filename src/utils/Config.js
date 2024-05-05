@@ -8,11 +8,14 @@ const allEndpoints = {
   },
   development: {
     web: 'https://thirdplaceappdev.com',
-    user: 'https://user-service.thirdplaceappdev.com',
+    // user: 'https://user-service.thirdplaceappdev.com',
     // community: 'https://community-service.thirdplaceappdev.com',
-    community: 'http://localhost:8080',
-    image: 'https://image-service.thirdplaceappdev.com',
-    notification: 'https://notification-service.thirdplaceappdev.com',
+    // image: 'https://image-service.thirdplaceappdev.com',
+    // notification: 'https://notification-service.thirdplaceappdev.com',
+    community: 'http://localhost:8091',
+    image: 'http://localhost:8092',
+    notification: 'http://localhost:8093',
+    user: 'http://localhost:8094',
   },
 };
 
