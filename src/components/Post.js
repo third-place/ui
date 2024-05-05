@@ -1,4 +1,4 @@
-import { Avatar, Card, IconButton, Text } from 'react-native-paper';
+import { Avatar, Card, IconButton, Text, useTheme } from 'react-native-paper';
 import { Image } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { useNavigation } from 'expo-router';
@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
 import { useSnack } from '../providers/SnackProvider';
+import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 
 export default function Post({
   post: {
@@ -22,6 +23,7 @@ export default function Post({
   const created = new Date(created_at);
   const { navigate, push } = useNavigation();
   const { show, hide } = useSnack();
+  const theme = useTheme();
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync(`${endpoints.web}/post/${uuid}`);
@@ -80,7 +82,7 @@ export default function Post({
         }}
       >
         <IconButton
-          icon={() => <FontAwesome name="comment-o" size={24} color="black" />}
+          icon={() => <FontAwesome name="comment-o" size={24} color={theme.colors.primary} />}
           onPress={() => navigate({
             name: 'post/[uuid]',
             params: {
@@ -88,33 +90,21 @@ export default function Post({
             }
           })}
           mode={"contained"}
-          theme={{
-            colors: "background",
-          }}
           style={{
             margin: 0,
           }}
         />
         <IconButton
-          icon={() => <FontAwesome name="heart-o" size={24} color="black" />}
+          icon={() => <FontAwesome name="heart-o" size={24} color={theme.colors.primary} />}
           onPress={() => null}
-          theme={{
-            colors: "background",
-          }}
         />
         <IconButton
-          icon={() => <MaterialIcons name="repeat" size={24} color="black" />}
+          icon={() => <MaterialIcons name="repeat" size={24} color={theme.colors.primary} />}
           onPress={() => null}
-          theme={{
-            colors: "background",
-          }}
         />
         <IconButton
-          icon={() => <AntDesign name="link" size={24} color="black" />}
+          icon={() => <AntDesign name="link" size={24} color={theme.colors.primary} />}
           onPress={copyToClipboard}
-          theme={{
-            colors: "background",
-          }}
         />
       </Card.Actions>
     </Card>
