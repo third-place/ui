@@ -8,7 +8,7 @@ import {
 import { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createPost } from '../actions/create-post';
-import { useSession } from '../hooks/SessionProvider';
+import { useSession } from '../providers/SessionProvider';
 
 export default function NewPost() {
   const { session } = useSession();

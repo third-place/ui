@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
-import { useSnack } from '../hooks/SnackProvider';
+import { useSnack } from '../providers/SnackProvider';
 
 export default function Post({
   post: {

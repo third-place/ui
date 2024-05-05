@@ -1,4 +1,4 @@
-import { SessionProvider } from '../src/hooks/SessionProvider';
+import { SessionProvider } from '../src/providers/SessionProvider';
 import { Slot } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 

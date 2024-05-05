@@ -3,7 +3,7 @@ import { Link, useLocalSearchParams } from 'expo-router';
 import { Text } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import getPost from '../../../src/actions/get-post';
-import { useSession } from '../../../src/hooks/SessionProvider';
+import { useSession } from '../../../src/providers/SessionProvider';
 import { default as PostComponent } from '../../../src/components/Post';
 
 export default function Post() {

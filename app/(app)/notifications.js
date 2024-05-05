@@ -1,7 +1,7 @@
 import Container from '../../src/components/Container';
 import { View } from 'react-native';
 import { useEffect, useState } from 'react';
-import { useSession } from '../../src/hooks/SessionProvider';
+import { useSession } from '../../src/providers/SessionProvider';
 import getNotifications from '../../src/actions/get-notifications';
 import { Text } from 'react-native-paper';
 

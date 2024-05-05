@@ -7,7 +7,7 @@ import {
   TextInput
 } from 'react-native-paper';
 import { useEffect, useState } from 'react';
-import { useSession } from '../hooks/SessionProvider';
+import { useSession } from '../providers/SessionProvider';
 import { router } from 'expo-router';
 import {default as signInAction} from '../actions/sign-in';
 

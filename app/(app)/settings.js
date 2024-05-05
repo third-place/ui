@@ -1,6 +1,6 @@
 import Container from '../../src/components/Container';
 import { Link, router } from 'expo-router';
-import { useSession } from '../../src/hooks/SessionProvider';
+import { useSession } from '../../src/providers/SessionProvider';
 
 export default function Settings() {
   const { signOut } = useSession();
