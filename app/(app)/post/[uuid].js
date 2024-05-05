@@ -16,7 +16,9 @@ export default function Post() {
     (async function() {
       console.log(uuid);
       const response = await getPost(session.token, uuid);
-      setPost(await response.json());
+      if (response.status === 200) {
+        setPost(await response.json());
+      }
     })();
   }, [uuid]);
 
