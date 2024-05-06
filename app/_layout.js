@@ -1,4 +1,3 @@
-import { SessionProvider } from '../src/providers/SessionProvider';
 import { Slot } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
@@ -6,16 +5,17 @@ import {
   MD3LightTheme,
   PaperProvider,
 } from 'react-native-paper';
-import { useColorScheme } from 'react-native';
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 import {
   ThemeProvider,
   DarkTheme,
   DefaultTheme,
 } from "@react-navigation/native";
+import { SessionProvider } from '../src/providers/SessionProvider';
+import useColorScheme from '../src/providers/useColorScheme';
 
 export default function AppLayout() {
-  const colorScheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
   const muiTheme = useMaterial3Theme();
 
   const theme =
