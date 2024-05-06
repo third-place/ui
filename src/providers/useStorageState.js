@@ -63,7 +63,6 @@ export function useStorageState(key) {
     }
   }, [key]);
 
-  // Set
   const setValue = useCallback(
     async (value) => {
       setState(value);
