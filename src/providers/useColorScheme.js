@@ -9,10 +9,9 @@ export default function useColorScheme() {
     ],
     setColorScheme,
   ] = useStorageState('colorScheme');
-  const rnColorScheme = rnUseColorScheme();
 
   if (!isLoading && colorScheme === null) {
-    setColorScheme(rnColorScheme);
+    setColorScheme(rnUseColorScheme());
   }
 
   return {
