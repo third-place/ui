@@ -16,7 +16,6 @@ import {
 
 export default function AppLayout() {
   const colorScheme = useColorScheme();
-  // const colorScheme = 'light';
   const muiTheme = useMaterial3Theme();
 
   const theme =
