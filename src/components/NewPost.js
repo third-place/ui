@@ -39,7 +39,9 @@ export default function NewPost() {
   };
 
   return (
-    <View>
+    <View style={{
+      marginVertical: 4,
+    }}>
       <TextInput
         placeholder={"What's on your mind?"}
         value={newPost}
@@ -53,6 +55,9 @@ export default function NewPost() {
         mode="contained"
         onPress={onSubmit}
         disabled={submitting}
+        style={{
+          marginVertical: 4,
+        }}
       >
         Submit
       </Button>
