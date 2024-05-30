@@ -7,10 +7,12 @@ import {
 } from '@react-navigation/native';
 import { MD3DarkTheme, MD3LightTheme, PaperProvider } from 'react-native-paper';
 import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
-import { Slot } from 'expo-router';
+import {Appearance} from 'react-native';
+
+const defaultTheme = Appearance.getColorScheme();
 
 const CustomThemeContext = createContext({
-  theme: "",
+  theme: defaultTheme ? defaultTheme : "default",
   setTheme: theme => {},
 });
 
@@ -28,6 +30,8 @@ export function CustomThemeProvider({ children }) {
   ] = useStorageState('customTheme');
 
   const muiTheme = useMaterial3Theme();
+
+  console.log("theme 2", theme, muiTheme);
 
   const colorScheme =
     theme === 'dark'
