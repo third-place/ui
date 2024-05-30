@@ -1,9 +1,9 @@
 import { Text } from 'react-native-paper';
 import { Redirect, Tabs } from 'expo-router'
-import { useSession } from '../../src/providers/SessionProvider';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { useSession } from '../../src/providers/SessionProvider';
 
 export default function Layout() {
   const { session, isLoading } = useSession();

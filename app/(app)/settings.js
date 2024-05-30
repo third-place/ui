@@ -1,13 +1,13 @@
-import Container from '../../src/components/Container';
 import { router } from 'expo-router';
 import {
   Button,
   RadioButton,
   Text
 } from 'react-native-paper';
+import { FontAwesome } from '@expo/vector-icons';
+import Container from '../../src/components/Container';
 import { useSession } from '../../src/providers/SessionProvider';
 import { useCustomTheme } from '../../src/providers/CustomThemeProvider';
-import { FontAwesome } from '@expo/vector-icons';
 import HeaderText from '../../src/components/typography/HeaderText';
 
 export default function Settings() {

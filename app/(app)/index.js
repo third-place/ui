@@ -1,11 +1,11 @@
-import { RefreshControl } from 'react-native';
-import Container from '../../src/components/Container';
 import { useCallback, useEffect, useState } from 'react';
-import getPosts from '../../src/actions/get-posts';
+import { RefreshControl } from 'react-native';
+import { HelperText } from 'react-native-paper';
+import Container from '../../src/components/Container';
+import getPosts from '../../src/actions/getPosts';
 import { useSession } from '../../src/providers/SessionProvider';
 import Post from '../../src/components/Post';
 import NewPost from '../../src/components/NewPost';
-import { HelperText } from 'react-native-paper';
 
 export default function Index() {
   const [posts, setPosts] = useState([]);

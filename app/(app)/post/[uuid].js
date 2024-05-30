@@ -1,8 +1,8 @@
-import Container from '../../../src/components/Container';
-import { Link, useLocalSearchParams, useNavigation } from 'expo-router';
-import { Button, Text } from 'react-native-paper';
 import { useEffect, useState } from 'react';
-import getPost from '../../../src/actions/get-post';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
+import { Button, Text } from 'react-native-paper';
+import Container from '../../../src/components/Container';
+import getPost from '../../../src/actions/getPost';
 import { useSession } from '../../../src/providers/SessionProvider';
 import { default as PostComponent } from '../../../src/components/Post';
 

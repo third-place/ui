@@ -1,7 +1,7 @@
-import Container from '../src/components/Container';
 import { Button, TextInput } from 'react-native-paper';
 import { useState } from 'react';
 import { router } from 'expo-router';
+import Container from '../src/components/Container';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');

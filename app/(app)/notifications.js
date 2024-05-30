@@ -1,9 +1,9 @@
-import Container from '../../src/components/Container';
-import { View } from 'react-native';
 import { useEffect, useState } from 'react';
-import { useSession } from '../../src/providers/SessionProvider';
-import getNotifications from '../../src/actions/get-notifications';
+import { View } from 'react-native';
 import { Text } from 'react-native-paper';
+import Container from '../../src/components/Container';
+import { useSession } from '../../src/providers/SessionProvider';
+import getNotifications from '../../src/actions/getNotifications';
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);

@@ -7,7 +7,7 @@ import {
 } from 'react-native-paper';
 import { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { createPost } from '../actions/create-post';
+import { createPost } from '../actions/createPost';
 import { useSession } from '../providers/SessionProvider';
 
 export default function NewPost() {

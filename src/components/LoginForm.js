@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Platform, View } from 'react-native';
 import {
   ActivityIndicator,
@@ -6,10 +7,9 @@ import {
   MD2Colors,
   TextInput
 } from 'react-native-paper';
-import { useEffect, useState } from 'react';
-import { useSession } from '../providers/SessionProvider';
 import { router } from 'expo-router';
-import {default as signInAction} from '../actions/sign-in';
+import { useSession } from '../providers/SessionProvider';
+import {default as signInAction} from '../actions/signIn';
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
