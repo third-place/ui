@@ -20,7 +20,7 @@ export default function Container({ children, refreshControl }) {
         refreshControl={refreshControl}
       >
         <SnackProvider>
-          <View style={{maxWidth: 400}}>
+          <View style={{minWidth: 400, maxWidth: 600}}>
             {children}
           </View>
         </SnackProvider>

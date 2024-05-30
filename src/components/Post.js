@@ -8,7 +8,6 @@ import { AntDesign } from '@expo/vector-icons';
 import { endpoints } from '../utils/Config';
 import { timeAgo } from '../utils/timeAgo';
 import { useSnack } from '../providers/SnackProvider';
-import { useMaterial3Theme } from '@pchmn/expo-material3-theme';
 
 export default function Post({
   post: {
@@ -17,6 +16,7 @@ export default function Post({
     user,
     created_at,
   },
+  linkCard,
 }) {
   const userDisplayName = user.name ? `${user.name} @${user.username}` : `@${user.username}`;
   const profilePic = user.profile_pic ? `${endpoints.image}/asset/${user.profile_pic}` : '';
@@ -31,8 +31,20 @@ export default function Post({
     setTimeout(() => hide(), 2000);
   };
 
+  const CardContainer = linkCard ?
+    (
+      ({children, style}) => <Card onPress={() => navigate({
+        name: 'post/[uuid]',
+        params: {
+          uuid
+        }
+      })} style={style}>{children}</Card>
+    ) : (
+      ({children, style}) => <Card style={style}>{children}</Card>
+    );
+
   return (
-    <Card
+    <CardContainer
       style={{
         marginVertical: 4,
     }}
@@ -107,6 +119,6 @@ export default function Post({
           onPress={copyToClipboard}
         />
       </Card.Actions>
-    </Card>
+    </CardContainer>
   );
 }

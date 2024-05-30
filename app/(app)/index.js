@@ -53,6 +53,7 @@ export default function Index() {
         <Post
           key={post.uuid}
           post={post}
+          linkCard
         />
       ))}
     </Container>

@@ -1,6 +1,6 @@
 import Container from '../../../src/components/Container';
-import { Link, useLocalSearchParams } from 'expo-router';
-import { Text } from 'react-native-paper';
+import { Link, useLocalSearchParams, useNavigation } from 'expo-router';
+import { Button, Text } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import getPost from '../../../src/actions/get-post';
 import { useSession } from '../../../src/providers/SessionProvider';
@@ -10,7 +10,7 @@ export default function Post() {
   const [post, setPost] = useState(null);
   const { uuid } = useLocalSearchParams();
   const { session } = useSession();
-  console.log("yolo");
+  const { goBack } = useNavigation();
 
   useEffect(() => {
     (async function() {
@@ -32,11 +32,11 @@ export default function Post() {
 
   return (
     <Container>
-      <Link
-        href={"/"}
+      <Button
+        onPress={goBack}
       >
         Back
-      </Link>
+      </Button>
       <PostComponent post={post} />
     </Container>
   )
