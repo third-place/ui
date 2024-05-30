@@ -12,7 +12,7 @@ import {Appearance} from 'react-native';
 const defaultTheme = Appearance.getColorScheme();
 
 const CustomThemeContext = createContext({
-  theme: defaultTheme ? defaultTheme : "default",
+  theme: defaultTheme,
   setTheme: theme => {},
 });
 
@@ -30,16 +30,15 @@ export function CustomThemeProvider({ children }) {
   ] = useStorageState('customTheme');
 
   const muiTheme = useMaterial3Theme();
-
-  console.log("theme 2", theme, muiTheme);
+  const themeToCompare = theme === "default" ? defaultTheme : theme;
 
   const colorScheme =
-    theme === 'dark'
+    themeToCompare === 'dark'
       ? DarkTheme
       : DefaultTheme;
 
   const paperColorScheme =
-    theme === 'dark'
+    themeToCompare === 'dark'
       ? { ...MD3DarkTheme, colors: muiTheme.theme.dark }
       : { ...MD3LightTheme, colors: muiTheme.theme.light };
 
