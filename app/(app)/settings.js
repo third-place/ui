@@ -2,11 +2,11 @@ import Container from '../../src/components/Container';
 import { Link, router } from 'expo-router';
 import { Switch, Text } from 'react-native-paper';
 import { useSession } from '../../src/providers/SessionProvider';
-import useColorScheme from '../../src/providers/useColorScheme';
+import { useCustomTheme } from '../../src/providers/CustomThemeProvider';
 
 export default function Settings() {
   const { signOut } = useSession();
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { theme, setTheme } = useCustomTheme();
 
   return (
     <Container>
@@ -14,8 +14,8 @@ export default function Settings() {
         Light
       </Text>
       <Switch
-        value={colorScheme === 'dark'}
-        onValueChange={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+        value={theme === 'dark'}
+        onValueChange={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       />
       <Text>
         Dark
