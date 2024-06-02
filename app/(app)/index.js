@@ -16,7 +16,7 @@ export default function Index() {
   const loadPosts = useCallback(async () => {
     setErrorLoading(false);
     try {
-      const response = await getPosts(session.token);
+      const response = await getPosts(session?.token);
       const data = await response.json();
       setPosts(data);
     } catch (e) {
@@ -31,9 +31,6 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
-    if (!session) {
-      return;
-    }
     (async function() {
       await loadPosts();
     })();

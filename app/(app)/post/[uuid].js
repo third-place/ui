@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import { Text } from 'react-native-paper';
-import Container from '../../src/components/Container';
-import getPost from '../../src/actions/getPost';
-import { useSession } from '../../src/providers/SessionProvider';
-import { default as PostComponent } from '../../src/components/Post';
+import Container from '../../../src/components/Container';
+import getPost from '../../../src/actions/getPost';
+import { useSession } from '../../../src/providers/SessionProvider';
+import { default as PostComponent } from '../../../src/components/Post';
 
 export default function Post() {
   const [isLoading, setIsLoading] = useState(true);

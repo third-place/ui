@@ -1,8 +1,8 @@
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useNavigation } from 'expo-router';
-import Container from '../src/components/Container';
-import LoginForm from '../src/components/LoginForm';
+import Container from '../../src/components/Container';
+import LoginForm from '../../src/components/LoginForm';
 
 export default function SignIn() {
   const navigation = useNavigation();
