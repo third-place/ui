@@ -21,7 +21,7 @@ export default function Post({
   const userDisplayName = user.name ? `${user.name} @${user.username}` : `@${user.username}`;
   const profilePic = user.profile_pic ? `${endpoints.image}/asset/${user.profile_pic}` : '';
   const created = new Date(created_at);
-  const { navigate, push } = useNavigation();
+  const { navigate } = useNavigation();
   const { show, hide } = useSnack();
   const theme = useTheme();
 

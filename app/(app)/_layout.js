@@ -1,9 +1,10 @@
 import { Text } from 'react-native-paper';
-import { Redirect, Tabs } from 'expo-router'
+import { Redirect, Tabs } from 'expo-router';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useSession } from '../../src/providers/SessionProvider';
+import HeaderTitleLink from '../../src/components/HeaderTitleLink';
 
 export default function Layout() {
   const { session, isLoading } = useSession();
@@ -23,7 +24,7 @@ export default function Layout() {
 
   // This layout can be deferred because it's not the root layout.
   return (
-    <Tabs>
+    <Tabs backBehavior="history">
       <Tabs.Screen
         options={{
           title: "Home",
@@ -49,10 +50,17 @@ export default function Layout() {
       <Tabs.Screen
         options={{
           href: null,
-          title: "Post"
+          headerTitle: () => <HeaderTitleLink />,
         }}
         name="post/[uuid]"
         getId={() => String(Date.now())}
+      />
+      <Tabs.Screen
+        options={{
+          title: "Change Password",
+          href: null,
+        }}
+        name="change-password"
       />
     </Tabs>
   );
