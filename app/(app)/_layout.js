@@ -4,7 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useSession } from '../../src/providers/SessionProvider';
-import HeaderTitleLink from '../../src/components/HeaderTitleLink';
+import HeaderTitleLink from '../../src/components/HeaderBack';
 
 export default function Layout() {
   const { session, isLoading } = useSession();
