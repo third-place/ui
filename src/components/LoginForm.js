@@ -10,6 +10,7 @@ import {
 import { router } from 'expo-router';
 import { useSession } from '../providers/SessionProvider';
 import {default as signInAction} from '../actions/signIn';
+import Styles from './Styles';
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -59,7 +60,7 @@ export default function LoginForm() {
         placeholder={"Email Address"}
         value={email}
         onChangeText={setEmail}
-        style={{marginVertical: 4}}
+        style={Styles.input}
         disabled={loading}
       />
       <TextInput
@@ -67,7 +68,7 @@ export default function LoginForm() {
         value={password}
         onChangeText={setPassword}
         secureTextEntry={true}
-        style={{marginVertical: 4}}
+        style={Styles.input}
         disabled={loading}
       />
       <HelperText type={"error"} visible={error}>
@@ -78,7 +79,7 @@ export default function LoginForm() {
           <ActivityIndicator animating={true} color={MD2Colors.grey600} /> : "login"}
         mode={"contained"}
         onPress={submitSignIn}
-        style={{marginVertical: 4}}
+        style={Styles.input}
         disabled={loading}
       >
         Login

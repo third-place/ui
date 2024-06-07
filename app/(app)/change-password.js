@@ -1,13 +1,59 @@
+import { Button, Text, TextInput } from 'react-native-paper';
+import { Redirect, router } from 'expo-router';
+import { useState } from 'react';
 import Container from '../../src/components/Container';
 import { useSession } from '../../src/providers/SessionProvider';
-import { Text } from 'react-native-paper';
+import Styles from '../../src/components/Styles';
 
 export default function () {
-  const { session } = useSession();
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword1, setNewPassword1] = useState('');
+  const [newPassword2, setNewPassword2] = useState('');
+  const { session, isLoading } = useSession();
+
+  if (isLoading) {
+    return (
+      <Container>
+        <Text>Loading</Text>
+      </Container>
+    );
+  }
+
+  if (!session) {
+    return (
+      <Redirect href="/sign-in" />
+    );
+  }
 
   return (
     <Container>
-      <Text>Test</Text>
+      <TextInput
+        placeholder="Current Password"
+        value={currentPassword}
+        onChangeText={setCurrentPassword}
+        style={Styles.input}
+      />
+      <TextInput
+        placeholder="New Password"
+        value={newPassword1}
+        onChangeText={setNewPassword1}
+        style={Styles.input}
+      />
+      <TextInput
+        placeholder="New Password (again)"
+        value={newPassword2}
+        onChangeText={setNewPassword2}
+        style={Styles.input}
+      />
+      <Button
+        icon={"key-change"}
+        mode={"contained"}
+        onPress={() => {
+        }}
+        style={Styles.input}
+      >
+        Change Password
+      </Button>
     </Container>
   )
 }

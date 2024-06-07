@@ -2,6 +2,7 @@ import { Button, TextInput } from 'react-native-paper';
 import { useState } from 'react';
 import { router } from 'expo-router';
 import Container from '../../src/components/Container';
+import Styles from '../../src/components/Styles';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -16,33 +17,33 @@ export default function SignUp() {
         placeholder={"Email Address"}
         value={email}
         onChangeText={setEmail}
-        style={{marginVertical: 4}}
+        style={Styles.input}
       />
       <TextInput
         placeholder={"Username"}
         value={username}
         onChangeText={setUsername}
-        style={{marginVertical: 4}}
+        style={Styles.input}
       />
       <TextInput
         placeholder={"Password"}
         value={password}
         onChangeText={setPassword}
-        style={{marginVertical: 4}}
+        style={Styles.input}
         secureTextEntry
       />
       <TextInput
         placeholder={"Password (Again)"}
         value={passwordConfirm}
         onChangeText={setPasswordConfirm}
-        style={{marginVertical: 4}}
+        style={Styles.input}
         secureTextEntry
       />
       <TextInput
         placeholder={"Invite Code"}
         value={inviteCode}
         onChangeText={setInviteCode}
-        style={{marginVertical: 4}}
+        style={Styles.input}
       />
       <Button
         icon={"login"}
@@ -50,7 +51,7 @@ export default function SignUp() {
         onPress={() => {
           router.replace("/");
         }}
-        style={{marginVertical: 4}}
+        style={Styles.input}
       >
         Signup
       </Button>
