@@ -24,10 +24,10 @@ export default function SignIn() {
         </Button>
         <Button
           icon={"lock-reset"}
-          onPress={() => navigation.navigate("forgot-password")}
+          onPress={() => navigation.navigate("reset-password")}
           style={{width: 180}}
         >
-          Forgot Password
+          Reset Password
         </Button>
       </View>
     </Container>

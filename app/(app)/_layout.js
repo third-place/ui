@@ -65,13 +65,6 @@ export default function Layout() {
       />
       <Tabs.Screen
         options={{
-          title: "Forgot Password",
-          href: null,
-        }}
-        name="forgot-password"
-      />
-      <Tabs.Screen
-        options={{
           title: "Change Password",
           href: null,
         }}

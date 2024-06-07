@@ -1,71 +1,43 @@
 import { View } from 'react-native';
-import { Button, HelperText, TextInput } from 'react-native-paper';
+import { Banner, Button, TextInput } from 'react-native-paper';
 import Styles from '../Styles';
 import { useState } from 'react';
-import resetPassword from '../../actions/resetPassword';
-import { router } from 'expo-router';
+import forgotPassword from '../../actions/forgotPassword';
 
 export default function () {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [otp, setOtp] = useState('');
-  const [error, setError] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(false);
 
-  const submitResetPassword = async event => {
+  const submitForgotPassword = async event => {
     event.preventDefault();
-    setError(false);
-    if (password !== confirmPassword) {
-      setError(true);
-      return;
-    }
-    const response = await resetPassword(email, password, otp);
-    if (response.status === 200) {
-      router.push("/sign-in");
-    }
+    await forgotPassword(email);
+    setBannerVisible(true);
   };
 
   return (
     <View>
+      <Banner
+        visible={bannerVisible}
+        actions={[{
+          label: "Ok",
+          onPress: () => setBannerVisible(false),
+        }]}
+      >
+        Your password reset request has been submitted.  Please check your email to proceed.
+      </Banner>
       <TextInput
         placeholder="Email Address"
         value={email}
         onChangeText={setEmail}
         style={Styles.input}
       />
-      <TextInput
-        placeholder="New Password"
-        value={password}
-        onChangeText={setPassword}
-        style={Styles.input}
-        secureTextEntry={true}
-      />
-      <TextInput
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        style={Styles.input}
-        secureTextEntry={true}
-      />
-      {error && (
-        <HelperText type="error" visible={error}>
-          Passwords do not match
-        </HelperText>
-      )}
-      <TextInput
-        placeholder="One Time Password (from email)"
-        value={otp}
-        onChangeText={setOtp}
-        style={Styles.input}
-      />
-
       <Button
-        icon={"key"}
+        icon={"lock-reset"}
         mode={"contained"}
-        onPress={submitResetPassword}
+        onPress={submitForgotPassword}
         style={Styles.input}
       >
-        Submit
+        Request Password Reset
       </Button>
     </View>
   );

@@ -27,9 +27,9 @@ export default function Settings() {
           onPress={() => router.push("/change-password")}
         />
         <List.Item
-          title="Change Password"
+          title="Reset Password"
           left={() => <MaterialCommunityIcons name="form-textbox-password" size={24} color={paperTheme.colors.primary} />}
-          onPress={() => router.push("/change-password")}
+          onPress={() => router.push("/reset-password")}
         />
       </List.Section>
       <HeaderText>Display</HeaderText>
