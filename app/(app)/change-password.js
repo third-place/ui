@@ -1,9 +1,10 @@
-import { Button, Text, TextInput } from 'react-native-paper';
-import { Redirect, router } from 'expo-router';
+import { Button, TextInput } from 'react-native-paper';
+import { Redirect } from 'expo-router';
 import { useState } from 'react';
 import Container from '../../src/components/Container';
 import { useSession } from '../../src/providers/SessionProvider';
 import Styles from '../../src/components/Styles';
+import Loading from '../../src/components/Loading';
 
 export default function () {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -13,9 +14,7 @@ export default function () {
 
   if (isLoading) {
     return (
-      <Container>
-        <Text>Loading</Text>
-      </Container>
+      <Loading />
     );
   }
 

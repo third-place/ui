@@ -1,10 +1,10 @@
-import { Text } from 'react-native';
 import Container from '../../src/components/Container';
+import ForgotPasswordForm from '../../src/components/forms/ForgotPasswordForm';
 
 export default function ForgotPasswordTab() {
   return (
     <Container>
-      <Text>Forgot Password</Text>
+      <ForgotPasswordForm />
     </Container>
   );
 }

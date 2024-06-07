@@ -8,9 +8,9 @@ import {
   TextInput
 } from 'react-native-paper';
 import { router } from 'expo-router';
-import { useSession } from '../providers/SessionProvider';
-import {default as signInAction} from '../actions/signIn';
-import Styles from './Styles';
+import { useSession } from '../../providers/SessionProvider';
+import {default as signInAction} from '../../actions/signIn';
+import Styles from '../Styles';
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");

@@ -1,16 +1,16 @@
-import { Text } from 'react-native-paper';
 import { Tabs } from 'expo-router';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { useSession } from '../../src/providers/SessionProvider';
 import HeaderTitleLink from '../../src/components/HeaderBack';
+import Loading from '../../src/components/Loading';
 
 export default function Layout() {
   const { session, isLoading } = useSession();
 
   if (isLoading) {
-    return <Text>Loading...</Text>;
+    return <Loading />;
   }
 
   return (
@@ -41,13 +41,6 @@ export default function Layout() {
       />
       <Tabs.Screen
         options={{
-          title: "Change Password",
-          href: null,
-        }}
-        name="change-password"
-      />
-      <Tabs.Screen
-        options={{
           href: null,
           headerTitle: () => <HeaderTitleLink />,
         }}
@@ -72,9 +65,24 @@ export default function Layout() {
       />
       <Tabs.Screen
         options={{
+          title: "Forgot Password",
           href: null,
         }}
         name="forgot-password"
+      />
+      <Tabs.Screen
+        options={{
+          title: "Change Password",
+          href: null,
+        }}
+        name="change-password"
+      />
+      <Tabs.Screen
+        options={{
+          title: "Reset Password",
+          href: null,
+        }}
+        name="reset-password"
       />
     </Tabs>
   );
